@@ -7,5 +7,5 @@ import com.systemcrud.domain.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
-
+	
 }

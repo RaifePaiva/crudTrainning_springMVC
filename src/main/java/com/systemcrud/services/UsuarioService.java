@@ -1,8 +1,8 @@
 package com.systemcrud.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.systemcrud.domain.Usuario;
@@ -19,8 +19,8 @@ public class UsuarioService {
 		usuarioRepository.save(usuario);
 	}
 	
-	public List<Usuario> listarUsuarios(){
-		return usuarioRepository.findAll();
+	public Page<Usuario> listarUsuarios(Pageable pg){
+		return usuarioRepository.findAll(pg);
 	}
 	
 	public void deletar(Long id) {

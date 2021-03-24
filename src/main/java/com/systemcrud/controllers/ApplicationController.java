@@ -1,8 +1,9 @@
 package com.systemcrud.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,10 +24,10 @@ public class ApplicationController {
 
 	
 	@GetMapping("usuarios")
-	public ModelAndView paginaDeUsuarios() {
+	public ModelAndView paginaDeUsuarios(@PageableDefault(size = 5) Pageable pg) {
 		
 		ModelAndView view = new ModelAndView("listaUsuarios");
-		List<Usuario> usuarios = UsuarioService.listarUsuarios();
+		Page<Usuario> usuarios = UsuarioService.listarUsuarios(pg);
 		view.addObject("usuarios", usuarios);
 		return view;
 	}
